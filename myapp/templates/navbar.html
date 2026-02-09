@@ -1,6 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="nav-link" href="/blog_list/">Blogs</a>
+    <a class="nav-link" href="/add_blog/">Add Blog</a>
+
+    {% if user.is_authenticated %}
+    <li>
+      <form action="{% url 'logout' %}" method='post'>
+        {% csrf_token %}
+        <button type='submit'class="nav-link">Logout</button>
+      </form>
+    </li>
+    {% else %}
+    <li><a href="{% url 'login' %}"> Login </a></li>
+    {% endif %}
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -3,6 +3,7 @@ from .forms import *
 from .models import *
 
 
+
 # Create your views here.
 def welcome(request):
     context = {'message': "Hello there I am sonia"}
@@ -23,4 +24,6 @@ def add_blog(request):
         form = BlogForm
     return render(request, 'add_blog.html', {'form': form})
 
+def error_404(request, exception):
+    return render(request, '404.html')
 
